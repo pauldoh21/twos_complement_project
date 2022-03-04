@@ -26,7 +26,7 @@ class Matches(models.Model):
     compatibilityScore = models.IntegerField(max_length=2)
 
     def __str__(self):
-        return self.title
+        return self.user1.username
 
 
 class Questionnaire(models.Model):
