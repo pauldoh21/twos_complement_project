@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html>
+
+    <head>
+        <title>TwosComplement</title>
+    </head>
+
+    <body>
+        <h1>Welcome to the number 1 CS site</h1>
+        <div>
+            <strong>{{ boldmessage }}</strong><br />
+            <a href="/TwosComplement/about_us/">About</a><br />
+            <a href="/TwosComplement/login/">Login</a><br />
+            <img src="{% static 'images/frontimage.jpg' %}"
+                alt="Front image" />
+        </div>
+    </body>
+
+</html> 
