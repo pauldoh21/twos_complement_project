@@ -1,6 +1,4 @@
 from django.db import models
-from jupyterlab_server import slugify
-from django.contrib.postgres.fields import ArrayField
 
 
 class User(models.Model):
@@ -16,11 +14,6 @@ class User(models.Model):
     bio = models.CharField(max_length=254)
     gender = models.CharField(max_length=30)
     sexualPreference = models.CharField(max_length=30)
-
-
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
-        super(User, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.username
