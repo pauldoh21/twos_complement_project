@@ -10,4 +10,7 @@ def about(request):
 def login(request):
     context_dict = {'boldmessage': 'This is the login page'}
     return render(request, 'TwosComplement/login.html', context=context_dict)
+def myDates(request):
+    context_dict = {'boldmessage': 'Here is a list of all you matches'}
+    return render(request, 'TwosComplement/my_dates.html', context=context_dict)
 
