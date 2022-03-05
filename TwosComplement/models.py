@@ -1,14 +1,15 @@
 from django.db import models
+from django.template.defaultfilters import slugify
 
 
 class User(models.Model):
     NAME_MAX_LENGTH = 128
 
     username = models.CharField(max_length=NAME_MAX_LENGTH, unique=True)
-    password = models.CharField(min_length=8, max_length=30)
+    password = models.CharField(max_length=30)
     age = models.IntegerField(max_length=2)
     email = models.EmailField(max_length=45)
-    name = models.CharField(max_length=NAME_MAX_LENGTH, unique=True)
+    name = models.CharField(max_length=NAME_MAX_LENGTH, unique=False)
     phone = models.IntegerField(default=11)
     photo = models.ImageField(upload_to='profile_images', blank=True)
     bio = models.CharField(max_length=254)
