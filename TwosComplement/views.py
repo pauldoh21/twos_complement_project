@@ -1,5 +1,7 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+
+from TwosComplement.forms import UserForm
 
 
 def index(request):
@@ -22,9 +24,9 @@ def myDates(request):
     return render(request, 'TwosComplement/my_dates.html', context=context_dict)
 
 
-def register(request):
-    context_dict = {'boldmessage': 'Please fill out your details below to register:'}
-    return render(request, 'TwosComplement/register.html', context=context_dict)
+#def register(request):
+ #   context_dict = {'boldmessage': 'Please fill out your details below to register:'}
+  #  return render(request, 'TwosComplement/register.html', context=context_dict)
 
 
 def myAccount(request):
@@ -40,4 +42,20 @@ def manage(request):
 def questionnaire(request):
     context_dict = {'boldmessage': 'Please fill out our questionnaire to finish registration:'}
     return render(request, 'TwosComplement/compatibility_questionnaire.html', context=context_dict)
+
+def register(request):
+    form = UserForm()
+
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+
+        if form.is_valid():
+            form.save(commit=True)
+            return redirect('/TwosComplement/compatibility_questionnaire/')
+        else:
+            print(form.errors)
+
+    return render(request, 'TwosComplement/register.html', {'form': form})
+
+    
 
