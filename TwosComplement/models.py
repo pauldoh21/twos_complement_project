@@ -3,13 +3,12 @@ from django.template.defaultfilters import slugify
 
 
 class User(models.Model):
-    NAME_MAX_LENGTH = 128
 
-    username = models.CharField(max_length=NAME_MAX_LENGTH, unique=True)
+    username = models.CharField(max_length=30, unique=True)
     password = models.CharField(max_length=30)
-    age = models.IntegerField(max_length=2)
+    age = models.IntegerField()
     email = models.EmailField(max_length=45)
-    name = models.CharField(max_length=NAME_MAX_LENGTH, unique=False)
+    name = models.CharField(max_length=30)
     phone = models.IntegerField(default=11)
     photo = models.ImageField(upload_to='profile_images', blank=True)
     bio = models.CharField(max_length=254)
@@ -22,9 +21,9 @@ class User(models.Model):
 
 class Matches(models.Model):
 
-    user1 = models.ForeignKey(User, on_delete=models.CASCADE)
-    user2 = models.ForeignKey(User, on_delete=models.CASCADE)
-    compatibilityScore = models.IntegerField(max_length=2)
+    user1 = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user1")
+    user2 = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user2")
+    compatibilityScore = models.IntegerField()
 
     def __str__(self):
         return self.user1.username
@@ -32,14 +31,14 @@ class Matches(models.Model):
 
 class Questionnaire(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    answer1 = models.IntegerField(max_length=2)
-    answer2 = models.IntegerField(max_length=2)
-    answer3 = models.IntegerField(max_length=2)
-    answer4 = models.IntegerField(max_length=2)
-    answer5 = models.IntegerField(max_length=2)
-    answer6 = models.IntegerField(max_length=2)
-    answer7 = models.IntegerField(max_length=2)
-    answer8 = models.IntegerField(max_length=2)
+    answer1 = models.IntegerField()
+    answer2 = models.IntegerField()
+    answer3 = models.IntegerField()
+    answer4 = models.IntegerField()
+    answer5 = models.IntegerField()
+    answer6 = models.IntegerField()
+    answer7 = models.IntegerField()
+    answer8 = models.IntegerField()
 
     def __str__(self):
         return self.user.username
