@@ -13,10 +13,12 @@
             <strong>{{ boldmessage }}</strong><br />
             <form id="UserForm" method="post" action="/TwosComplement/register/">
                 {% csrf_token %}
-                {% for field in form.visible_fields %}
+
+                {% for field in user_form.visible_fields %}
                     {{ field.errors }}
                     {{ field.help_text }}
                     {{ field }}
+                </br>
                 {% endfor %}
             <input type="submit" name="submit" value="Register" />
             </form>

@@ -43,19 +43,23 @@ def questionnaire(request):
     context_dict = {'boldmessage': 'Please fill out our questionnaire to finish registration:'}
     return render(request, 'TwosComplement/compatibility_questionnaire.html', context=context_dict)
 
+
 def register(request):
-    form = UserForm()
-
     if request.method == 'POST':
-        form = UserForm(request.POST)
+        user_form = UserForm(request.POST)
 
-        if form.is_valid():
-            form.save(commit=True)
+        if user_form.is_valid():
+            user = user_form.save()
+            user.save()
             return redirect('/TwosComplement/compatibility_questionnaire/')
         else:
-            print(form.errors)
+            print(user_form.errors)
+    else:
+        user_form = UserForm()
 
-    return render(request, 'TwosComplement/register.html', {'form': form})
+    return render(request, 'TwosComplement/register.html', context={'user_form': user_form})
+
+
 
     
 

@@ -2,14 +2,14 @@ from django.db import models
 from django.template.defaultfilters import slugify
 
 
-class User(models.Model):
+class UserProfile(models.Model):
 
     username = models.CharField(max_length=30, unique=True)
     password = models.CharField(max_length=30)
     age = models.IntegerField()
     email = models.EmailField(max_length=45)
     name = models.CharField(max_length=30)
-    phone = models.IntegerField(default=11)
+    phone = models.CharField(max_length=11)
     photo = models.ImageField(upload_to='profile_images', blank=True)
     bio = models.CharField(max_length=254)
     gender = models.CharField(max_length=30)
@@ -21,8 +21,8 @@ class User(models.Model):
 
 class Matches(models.Model):
 
-    user1 = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user1")
-    user2 = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user2")
+    user1 = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name="user1")
+    user2 = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name="user2")
     compatibilityScore = models.IntegerField()
 
     def __str__(self):
@@ -30,7 +30,7 @@ class Matches(models.Model):
 
 
 class Questionnaire(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
     answer1 = models.IntegerField()
     answer2 = models.IntegerField()
     answer3 = models.IntegerField()

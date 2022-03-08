@@ -1,6 +1,6 @@
 from django.contrib import admin
-from TwosComplement.models import User, Matches, Questionnaire
+from TwosComplement.models import UserProfile, Matches, Questionnaire
 
-admin.site.register(User)
+admin.site.register(UserProfile)
 admin.site.register(Matches)
 admin.site.register(Questionnaire)
