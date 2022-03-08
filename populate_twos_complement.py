@@ -42,32 +42,28 @@ def populate():
 
 
 def add_user(username, password, age, email, name, phone, photo, bio, gender, sexualPreference):
-    u = UserProfile.objects.get_or_create()[0]
-    u.username = username
+    u = UserProfile.objects.get_or_create(username=username, age=age, gender=gender, sexualPreference=sexualPreference)[0]
     u.password = password
-    u.age = age
     u.email = email
     u.name = name
     u.phone = phone
     u.photo = photo
     u.bio = bio
-    u.gender = gender
-    u.sexualPreference = sexualPreference
+    print(username)
     u.save()
     return u
 
 
 def add_questionnaire(user, answers):
-    q = Questionnaire.objects.get_or_create()[0]
-    q.user = user
-    q.answer1 = answers["ans1"]
-    q.answer2 = answers["ans2"]
-    q.answer3 = answers["ans3"]
-    q.answer4 = answers["ans4"]
-    q.answer5 = answers["ans5"]
-    q.answer6 = answers["ans6"]
-    q.answer7 = answers["ans7"]
-    q.answer8 = answers["ans8"]
+    q = Questionnaire.objects.get_or_create(answer1=answers["ans1"],
+                                            answer2=answers["ans2"],
+                                            answer3=answers["ans3"],
+                                            answer4=answers["ans4"],
+                                            answer5=answers["ans5"],
+                                            answer6=answers["ans6"],
+                                            answer7=answers["ans7"],
+                                            answer8=answers["ans8"],
+                                            user=user)[0]
     q.save()
     return q
 
