@@ -1,6 +1,10 @@
+from queue import Empty
 from django.db import models
 from django.template.defaultfilters import slugify
 
+
+Gender = (('0',''),('1','Male'),('2', 'Female'),('3', 'Prefer not to specify'))
+Sexual_Preference = (('0',''),('1','Male'),('2', 'Female'))
 
 class UserProfile(models.Model):
 
@@ -12,8 +16,8 @@ class UserProfile(models.Model):
     phone = models.CharField(max_length=11)
     photo = models.ImageField(upload_to='profile_images', blank=True)
     bio = models.CharField(max_length=254)
-    gender = models.CharField(max_length=30)
-    sexualPreference = models.CharField(max_length=30)
+    gender = models.CharField(max_length=30, choices=Gender, default=None)
+    sexualPreference = models.CharField(max_length=30, choices=Sexual_Preference, default=None)
 
     def __str__(self):
         return self.username
