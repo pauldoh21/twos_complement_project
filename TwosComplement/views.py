@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
-from TwosComplement.forms import UserForm
+from TwosComplement.forms import UserForm, QuestionnaireForm
 
 
 def index(request):
@@ -41,6 +41,17 @@ def manage(request):
 
 def questionnaire(request):
     context_dict = {'boldmessage': 'Please fill out our questionnaire to finish registration:'}
+    if request.method == 'POST':
+        questionnaire_form = QuestionnaireForm(request.POST)
+
+        if questionnaire_form.is_valid():
+            questionnaire = questionnaire_form.save()
+            questionnaire.save()
+            return redirect('/TwosComplement/index')
+        else:
+            print(questionnaire_form.errors)
+    else:
+        questionnaire_form = QuestionnaireForm()
     return render(request, 'TwosComplement/compatibility_questionnaire.html', context=context_dict)
 
 
