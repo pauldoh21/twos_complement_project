@@ -6,6 +6,7 @@ from TwosComplement.models import UserProfile, Questionnaire
 Gender = (('0',''),('1','Male'),('2', 'Female'),('3', 'Prefer not to specify'))
 Sexual_Preference = (('0',''),('1','Male'),('2', 'Female'))
 
+
 class UserForm(forms.ModelForm):
     username = forms.CharField(max_length=30, required=True, help_text="Username" )
     password = forms.CharField(widget=forms.PasswordInput(),help_text="Password")
