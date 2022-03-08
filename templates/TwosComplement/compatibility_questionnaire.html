@@ -13,14 +13,14 @@
             <form id ="questionnaire_form" method="post" action="/TwosComplement/register/compatibility_questionnaire/">
                 {% csrf_token %}
                 
-                {% for field in user_form.visible_fields %}
+                {% for field in questionnaire_form.visible_fields %}
                     {{ field.errors }}
                     {{ field.help_text }} <br />
                     {{ field }}
                 </br>
                 {% endfor %}
                 <br />
-            <input type="submit" name="submit" value="Questionnaire" />
+            <input type="submit" name="submit" value="Submit" />
             </form>
             <br />
 
@@ -30,11 +30,6 @@
             <a href="/TwosComplement/login/">Log in</a><br />
         </div>
 
-        <div>
-            <!--
-
-            -->
-        </div>
     </body>
 
 </html>

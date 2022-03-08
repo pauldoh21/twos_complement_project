@@ -38,7 +38,7 @@ class QuestionnaireForm(forms.ModelForm):
     Q1 = forms.CharField(label="What is your favourite programming language?", widget=forms.Select(choices=Q1Choices),help_text="What is your favourite language?")
     Q2 = forms.CharField(label="What IDE do you use the most?", widget=forms.Select(choices=Q2Choices),help_text="What IDE do you use the most?")
     Q3 = forms.CharField(label="How long have you been coding for?", widget=forms.Select(choices=Q3Choices),help_text="How long have you been coding for?")
-    Q4 = forms.CharField(label="What do enjoy developing the most?", widget=forms.Select(choices=Q4Choices),help_text="What do enjoy developing the most?")
+    Q4 = forms.CharField(label="What do you enjoy developing the most?", widget=forms.Select(choices=Q4Choices),help_text="What do enjoy developing the most?")
     Q5 = forms.CharField(label="What area of Computer Science intrigues you the most?", widget=forms.Select(choices=Q5Choices),help_text="What area Computer Science intrigues you the most?")
     Q6 = forms.CharField(label="What is your star sign?", widget=forms.Select(choices=Q6Choices),help_text="Whats your star sign?")
     Q7 = forms.CharField(label="How would you describe yourself?", widget=forms.Select(choices=Q7Choices),help_text="How would you describe yourself?")
