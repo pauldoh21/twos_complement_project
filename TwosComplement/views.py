@@ -52,7 +52,7 @@ def questionnaire(request):
             print(questionnaire_form.errors)
     else:
         questionnaire_form = QuestionnaireForm()
-    return render(request, 'TwosComplement/compatibility_questionnaire.html', context={'questionaire_form': questionnaire_form})
+    return render(request, 'TwosComplement/compatibility_questionnaire.html', context={'questionnaire_form': questionnaire_form})
 
 
 def register(request):
