@@ -43,6 +43,8 @@ class Questionnaire(models.Model):
     answer6 = models.IntegerField()
     answer7 = models.IntegerField()
     answer8 = models.IntegerField()
+    answer9 = models.IntegerField()
+    answer10 = models.IntegerField()
 
     def __str__(self):
         return self.user.username
