@@ -4,7 +4,7 @@ from django.forms import CharField
 from TwosComplement.models import UserProfile, Questionnaire
 
 Gender = (('0',''),('1','Male'),('2', 'Female'),('3', 'Prefer not to specify'))
-Sexual_Preference = (('0',''),('1','Male'),('2', 'Female'))
+Sexual_Preference = (('0',''),('1','Male'),('2', 'Female'),('3', 'No preference'))
 
 Q1Choices = (('0',''),('1',"Python"), ('2',"java"), ('3',"C and related"), ('4',"other"))
 Q2Choices = (('0',''),('1',"VSCode"),('2',"Eclipse"),('3',"IntelliJ"),('4',"PyCharm"))
@@ -36,7 +36,7 @@ class UserForm(forms.ModelForm):
                   'photo', 'bio', 'gender', 'sexualPreference',)
 
 class QuestionnaireForm(forms.ModelForm):
-    Q1 = forms.CharField(label="What is your favourite programming language?", widget=forms.Select(choices=Q1Choices),help_text="What is your favourite language?")
+    Q1 = forms.CharField(label="What is your favourite programming language?", widget=forms.Select(choices=Q1Choices),help_text="What is your favourite programming language?")
     Q2 = forms.CharField(label="What IDE do you use the most?", widget=forms.Select(choices=Q2Choices),help_text="What IDE do you use the most?")
     Q3 = forms.CharField(label="How long have you been coding for?", widget=forms.Select(choices=Q3Choices),help_text="How long have you been coding for?")
     Q4 = forms.CharField(label="What do you enjoy developing the most?", widget=forms.Select(choices=Q4Choices),help_text="What do enjoy developing the most?")

@@ -4,7 +4,7 @@ from django.template.defaultfilters import slugify
 
 
 Gender = (('0',''),('1','Male'),('2', 'Female'),('3', 'Prefer not to specify'))
-Sexual_Preference = (('0',''),('1','Male'),('2', 'Female'))
+Sexual_Preference = (('0',''),('1','Male'),('2', 'Female'),('3','No preference'))
 
 Q1Choices = (('0',''),('1',"Python"), ('2',"java"), ('3',"C and related"), ('4',"other"))
 Q2Choices = (('0',''),('1',"VSCode"),('2',"Eclipse"),('3',"IntelliJ"),('4',"PyCharm"))
