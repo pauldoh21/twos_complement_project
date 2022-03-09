@@ -1,6 +1,6 @@
-from queue import Empty
+
 from django.db import models
-from django.template.defaultfilters import slugify
+from django.contrib.auth.models import User
 
 
 Gender = (('0',''),('1','Male'),('2', 'Female'),('3', 'Prefer not to specify'))
@@ -19,11 +19,8 @@ Q10Choices = (('0',''),('1',"Italian"),('2',"Indian"),('3',"Chinese"),('4',"Mexi
 
 
 class UserProfile(models.Model):
-
-    username = models.CharField(max_length=30, unique=True)
-    password = models.CharField(max_length=30)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     age = models.IntegerField()
-    email = models.EmailField(max_length=45)
     name = models.CharField(max_length=30)
     phone = models.CharField(max_length=11)
     photo = models.ImageField(upload_to='profile_images', blank=True)
@@ -32,7 +29,7 @@ class UserProfile(models.Model):
     sexualPreference = models.CharField(max_length=30, choices=Sexual_Preference, default=None)
 
     def __str__(self):
-        return self.username
+        return self.user.username
 
 
 class Matches(models.Model):
@@ -44,10 +41,13 @@ class Matches(models.Model):
     def __str__(self):
         return self.user1.username
 
+    class Meta:
+        verbose_name_plural = 'Matches'
+
 
 class Questionnaire(models.Model):
 
-    user = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     Q1 = models.CharField(max_length=30, choices=Q1Choices, default=None)
     Q2 = models.CharField(max_length=30, choices=Q2Choices, default=None)
     Q3 = models.CharField(max_length=30, choices=Q3Choices, default=None)

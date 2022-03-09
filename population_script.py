@@ -6,6 +6,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'twos_complement_project.setting
 import django
 
 django.setup()
+from django.contrib.auth.models import User
 from TwosComplement.models import UserProfile, Matches, Questionnaire
 
 random.seed(1564)
@@ -88,21 +89,20 @@ def populate():
                                                              }})
 
     for user in range(len(users)):
-        u = add_user(users[user]["username"], users[user]["password"], users[user]["age"], users[user]["email"], users[user]["name"], users[user]["phone"],
+        u = add_user(users[user]["username"], users[user]["email"], users[user]["password"], users[user]["age"],
+                     users[user]["name"], users[user]["phone"],
                      users[user]["photo"], users[user]["bio"], users[user]["gender"], users[user]["sexualPreference"])
         add_questionnaire(u, questionnaires[user]["answers"])
         print("Adding ", users[user]["username"], "\n", questionnaires[user]["answers"], "\n")
 
 
-def add_user(username, password, age, email, name, phone, photo, bio, gender, sexualPreference):
-    u = UserProfile.objects.get_or_create(username=username, age=age, gender=gender, sexualPreference=sexualPreference)[0]
-    u.password = password
-    u.email = email
-    u.name = name
-    u.phone = phone
-    u.photo = photo
-    u.bio = bio
+def add_user(username, email, password, age, name, phone, photo, bio, gender, sexualPreference):
+    u = User.objects.create_user(username=username, email=email, password=password)
     u.save()
+    up = UserProfile.objects.get_or_create(user=u, age=age, name=name,
+                                           phone=phone, photo=photo, bio=bio,
+                                           gender=gender, sexualPreference=sexualPreference)[0]
+    up.save()
     return u
 
 

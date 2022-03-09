@@ -11,9 +11,13 @@
         <div>
             <h1>Register</h1>
             <strong>{{ boldmessage }}</strong><br />
-            <form id="UserForm" method="post" action="/TwosComplement/register/">
+            <form id="user_form" method="post" action="/TwosComplement/register/"
+            enctype="multipart/form-data">
                 {% csrf_token %}
 
+                {{ user_form.as_p }}
+                {{ profile_form.as_p }}
+                <!--
                 {% for field in user_form.visible_fields %}
                     {{ field.errors }}
                     {{ field.help_text }} <br />
@@ -21,6 +25,7 @@
                 </br>
                 {% endfor %}
                 <br />
+                -->
             <input type="submit" name="submit" value="Register" />
             </form>
             <br />

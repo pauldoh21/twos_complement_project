@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.models import User
 from django.forms import CharField
 
 from TwosComplement.models import UserProfile, Questionnaire
@@ -19,10 +20,15 @@ Q10Choices = (('0',''),('1',"Italian"),('2',"Indian"),('3',"Chinese"),('4',"Mexi
 
 
 class UserForm(forms.ModelForm):
-    username = forms.CharField(max_length=30, required=True, help_text="Username" )
-    password = forms.CharField(widget=forms.PasswordInput(),help_text="Password")
+    password = forms.CharField(widget=forms.PasswordInput())
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password',)
+
+
+class UserProfileForm(forms.ModelForm):
     age = forms.IntegerField(required=True, help_text="Age")
-    email = forms.EmailField(max_length=45, required=True, help_text="Email")
     name = forms.CharField(max_length=30, required=True, help_text="Name")
     phone = forms.CharField(max_length=11, required=True, help_text="Phone number")
     photo = forms.ImageField(help_text="Profile image",required=False)
@@ -32,8 +38,8 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = ('username', 'password', 'age', 'email', 'name', 'phone',
-                  'photo', 'bio', 'gender', 'sexualPreference',)
+        fields = ('age', 'name', 'phone', 'photo', 'bio', 'gender', 'sexualPreference',)
+
 
 class QuestionnaireForm(forms.ModelForm):
     Q1 = forms.CharField(label="What is your favourite programming language?", widget=forms.Select(choices=Q1Choices),help_text="What is your favourite programming language?")
