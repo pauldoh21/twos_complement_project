@@ -19,7 +19,7 @@ Q10Choices = (('0',''),('1',"Italian"),('2',"Indian"),('3',"Chinese"),('4',"Mexi
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     age = models.IntegerField()
     name = models.CharField(max_length=30)
     phone = models.CharField(max_length=11)

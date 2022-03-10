@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 
 from TwosComplement.forms import UserForm, UserProfileForm, QuestionnaireForm
 
@@ -31,11 +31,9 @@ def myDates(request):
 #   context_dict = {'boldmessage': 'Please fill out your details below to register:'}
 #  return render(request, 'TwosComplement/register.html', context=context_dict)
 
-
 def myAccount(request):
     context_dict = {'boldmessage': 'View your profile!'}
     return render(request, 'TwosComplement/my_account.html', context=context_dict)
-
 
 def manage(request):
     context_dict = {'boldmessage': 'Change any details about your profile here:'}
@@ -89,7 +87,6 @@ def register(request):
 
 
 def user_login(request):
-    print("this is working")
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -108,7 +105,7 @@ def user_login(request):
     else:
         return render(request, 'TwosComplement/login.html')
 
-
+@login_required(login_url=reverse_lazy("index"))
 def user_logout(request):
     logout(request)
     return redirect(reverse('index'))

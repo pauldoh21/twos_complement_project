@@ -4,8 +4,8 @@ from django.forms import CharField
 
 from TwosComplement.models import UserProfile, Questionnaire
 
-Gender = (('0',''),('1','Male'),('2', 'Female'),('3', 'Prefer not to specify'))
-Sexual_Preference = (('0',''),('1','Male'),('2', 'Female'),('3', 'No preference'))
+Gender = (('0','Choose an option'),('1','Male'),('2', 'Female'),('3', 'Prefer not to specify'))
+Sexual_Preference = (('0','Choose an option'),('1','Male'),('2', 'Female'),('3', 'No preference'))
 
 Q1Choices = (('0',''),('1',"Python"), ('2',"java"), ('3',"C and related"), ('4',"other"))
 Q2Choices = (('0',''),('1',"VSCode"),('2',"Eclipse"),('3',"IntelliJ"),('4',"PyCharm"))
@@ -28,13 +28,13 @@ class UserForm(forms.ModelForm):
 
 
 class UserProfileForm(forms.ModelForm):
-    age = forms.IntegerField(required=True, help_text="Age")
-    name = forms.CharField(max_length=30, required=True, help_text="Name")
-    phone = forms.CharField(max_length=11, required=True, help_text="Phone number")
-    photo = forms.ImageField(help_text="Profile image",required=False)
-    bio = forms.CharField(max_length=254, help_text="Bio")
-    gender = forms.CharField(label='Gender', widget=forms.Select(choices=Gender),help_text="Gender")
-    sexualPreference = forms.CharField(label='Sexual preference', widget=forms.Select(choices=Sexual_Preference),help_text="Sexual preference")
+    age = forms.IntegerField(required=True)
+    name = forms.CharField(max_length=30, required=True)
+    phone = forms.CharField(max_length=11, required=True)
+    photo = forms.ImageField(required=False)
+    bio = forms.CharField(max_length=254)
+    gender = forms.CharField(label='Gender', widget=forms.Select(choices=Gender))
+    sexualPreference = forms.CharField(label='Sexual preference', widget=forms.Select(choices=Sexual_Preference))
 
     class Meta:
         model = UserProfile
