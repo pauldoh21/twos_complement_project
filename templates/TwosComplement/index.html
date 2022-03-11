@@ -4,18 +4,25 @@
 <html>
 
     <head>
+        <link rel = "stylesheet" href = "{% static 'css/style.css' %}" type="text/css">
         <title>Index</title>
     </head>
 
     <body>
+        
+        <ul>
+            <li><a href="TwosComplement/index/"><img id = "logo" src="{% static 'images/logo.png' %}"
+                alt="Twos Complement logo" /></a></li>
+            <li><a href="/TwosComplement/login/">Login</a></li>
+            <li><a href="/TwosComplement/register/">Register</a></li>
+            <li><a href="/TwosComplement/about_us/">About</a></li>
+        </ul>
+
         <h1>Welcome to the number 1 CS site</h1>
         
         <h3>Please register or login below if you already have an account </h3>
         <div>
             <strong>{{ boldmessage }}</strong><br />
-            <a href="/TwosComplement/login/">Login</a><br />
-            <a href="/TwosComplement/register/">Register</a><br />
-            <a href="/TwosComplement/about_us/">About</a><br />
             <img src="{% static 'images/frontimage.jpg' %}"
                 alt="Front image" />
         </div>
