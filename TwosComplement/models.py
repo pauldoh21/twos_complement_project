@@ -39,7 +39,7 @@ class Matches(models.Model):
     compatibilityScore = models.IntegerField()
 
     def __str__(self):
-        return self.user1.username
+        return self.user1.name
 
     class Meta:
         verbose_name_plural = 'Matches'
