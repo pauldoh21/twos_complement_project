@@ -10,7 +10,7 @@
     <body>
         <div>
             <h1>Register</h1>
-            <form id="user_form" method="post" action="/TwosComplement/register/"
+            <form id="user_form" method="post" action="{% url 'TwosComplement:register' %}"
             enctype="multipart/form-data">
                 {% csrf_token %}
 
@@ -28,10 +28,10 @@
             <input type="submit" name="submit" value="Register" />
             </form>
             <br />
-            <a href="/TwosComplement/">Home</a><br />
-            <a href="/TwosComplement/login/">Log in</a><br />
-            <a href="/TwosComplement/about_us/">About us</a><br />
-            <a href="/TwosComplement/register/compatibility_questionnaire/">Questionnaire</a><br />
+            <a href="{% url 'TwosComplement:index' %}">Home</a><br />
+            <a href="{% url 'TwosComplement:login' %}">Log in</a><br />
+            <a href="{% url 'TwosComplement:about_us' %}">About us</a><br />
+            <a href="{% url 'TwosComplement:compatibility' %}">Questionnaire</a><br />
         </div>
     </body>
 </html>

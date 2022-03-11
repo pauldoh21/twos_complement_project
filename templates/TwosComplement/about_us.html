@@ -11,10 +11,9 @@
         <h1>About page</h1>
         <div>
             <strong>{{ boldmessage }}</strong><br />
-            <a href="/TwosComplement/">Home</a><br />
-            <a href="/TwosComplement/login/">Login</a><br />
-            <a href="/TwosComplement/register/">Register</a><br />
-            
+            <a href="{% url 'TwosComplement:index' %}">Home</a><br />
+            <a href="{% url 'TwosComplement:login' %}">Log in</a><br />
+            <a href="{% url 'TwosComplement:register' %}">Register</a><br />
         </div>
     </body>
 

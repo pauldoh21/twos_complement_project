@@ -18,9 +18,9 @@
           <input type="submit" value="submit" />
         </form>
         <div>
-            <a href="/TwosComplement/">Home</a><br />
-            <a href="/TwosComplement/about_us/">About us</a><br />
-            <a href="/TwosComplement/register/">Register</a><br />
+            <a href="{% url 'TwosComplement:index' %}">Home</a><br />
+            <a href="{% url 'TwosComplement:about_us' %}">About us</a><br />
+            <a href="{% url 'TwosComplement:register' %}">Register</a><br />
         </div>
     </body>
 </html> 

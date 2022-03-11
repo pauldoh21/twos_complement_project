@@ -10,7 +10,7 @@
     <body>
         <h1>Questionnaire</h1>
         <div>
-            <form id ="questionnaire_form" method="post" action="/TwosComplement/register/compatibility_questionnaire/">
+            <form id ="questionnaire_form" method="post" action="{% url 'TwosComplement:compatibility' %}">
                 {% csrf_token %}
                 
                 {% for field in questionnaire_form.visible_fields %}
@@ -25,9 +25,9 @@
             <br />
 
             <strong>{{ boldmessage }}</strong><br />
-            <a href="/TwosComplement/">Home</a><br />
-            <a href="/TwosComplement/about_us/">About us</a><br />
-            <a href="/TwosComplement/login/">Log in</a><br />
+            <a href="{% url 'TwosComplement:index' %}">Home</a><br />
+            <a href="{% url 'TwosComplement:about_us' %}">About us</a><br />
+            <a href="{% url 'TwosComplement:login' %}"></a><br />
         </div>
 
     </body>

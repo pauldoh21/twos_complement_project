@@ -13,9 +13,9 @@
         <ul>
             <li><a href=""><img id = "logo" src="{% static 'images/logo.png' %}"
                 alt="Twos Complement logo" /></a></li>
-            <li><a href="/TwosComplement/login/">Login</a></li>
-            <li><a href="/TwosComplement/register/">Register</a></li>
-            <li><a href="/TwosComplement/about_us/">About</a></li>
+            <li><a href="{% url 'TwosComplement:login' %}">Login</a></li>
+            <li><a href="{% url 'TwosComplement:register' %}">Register</a></li>
+            <li><a href="{% url 'TwosComplement:about_us' %}">About</a></li>
         </ul>
 
         <h1>Welcome to the number 1 CS site</h1>

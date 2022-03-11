@@ -11,9 +11,9 @@
         <h1>Manage my account</h1>
         <div>
             <strong>{{ boldmessage }}</strong><br />
-            <a href="/TwosComplement/">Home</a><br />
-            <a href="/TwosComplement/login/my_dates/">My dates</a><br />
-            <a href="/TwosComplement/about_us/">About us</a><br />
+            <a href="{% url 'TwosComplement:index' %}">Home</a><br />
+            <a href="{% url 'TwosComplement:my_dates' %}">My dates</a><br />
+            <a href="{% url 'TwosComplement:about_us' %}">About us</a><br />
 
         </div>
     </body>
