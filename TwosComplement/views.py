@@ -4,7 +4,44 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
 
+from TwosComplement.models import UserProfile, Matches, Questionnaire
 from TwosComplement.forms import UserForm, UserProfileForm, QuestionnaireForm
+
+
+def check_match(q1, q2):
+    users = UserProfile.objects.all()
+
+    for u in users:
+        if q1.user == u.user:
+            user1 = u
+        if q2.user == u.user:
+            user2 = u
+
+    # print(user1.name, user1.sexualPreference, user1.gender, user2.name, user2.sexualPreference, user2.gender)
+    # print(user1.sexualPreference == user2.gender)
+    if ((user1.sexualPreference == user2.gender) or (user1.sexualPreference == '3')) and ((user2.sexualPreference == user1.gender) or (user2.sexualPreference == '3')):
+
+        q1_ans = {a: b for a, b in vars(q1).items() if a.startswith("Q")}
+        q2_ans = {a: b for a, b in vars(q2).items() if a.startswith("Q")}
+
+        # print(q1_ans)
+        # print(q2_ans)
+
+        match_score = 0
+
+        for i, j in q1_ans.items():
+            # print(q1_ans[i], q2_ans[i])
+            if q1_ans[i] == q2_ans[i] and q2.user != q1.user:
+                match_score += 1
+
+        if match_score > 3:
+            Matches.objects.get_or_create(user1=user1, user2=user2, compatibilityScore=match_score)
+            return [user2, match_score]
+        else:
+            return None
+
+    else:
+        return None
 
 
 def index(request):
@@ -22,8 +59,36 @@ def about(request):
 #    return render(request, 'TwosComplement/login.html', context=context_dict)
 
 
+@login_required
 def myDates(request):
+
     context_dict = {'boldmessage': 'Here is a list of all your matches!'}
+
+    match_list = Matches.objects.all()
+    users = UserProfile.objects.all()
+    questionnaires = Questionnaire.objects.all()
+
+    active_user = request.user
+
+    for q in range(len(questionnaires)):
+        # print(questionnaires[q].user, active_user)
+        if questionnaires[q].user == active_user:
+            active_user_questionnaire = questionnaires[q]
+
+    matches = []
+
+    for u in range(len(questionnaires)):
+        match_check = check_match(active_user_questionnaire, questionnaires[u])
+        if match_check is not None:
+            matches.append(match_check)
+
+    matches.sort(key=lambda x: x[1], reverse=True)
+
+
+    context_dict['matches'] = [a[0] for a in matches[:5]]
+
+    # print(context_dict['matches'])
+
     return render(request, 'TwosComplement/my_dates.html', context=context_dict)
 
 
@@ -31,15 +96,20 @@ def myDates(request):
 #   context_dict = {'boldmessage': 'Please fill out your details below to register:'}
 #  return render(request, 'TwosComplement/register.html', context=context_dict)
 
+
+@login_required
 def myAccount(request):
     context_dict = {'boldmessage': 'View your profile!'}
     return render(request, 'TwosComplement/my_account.html', context=context_dict)
 
+
+@login_required
 def manage(request):
     context_dict = {'boldmessage': 'Change any details about your profile here:'}
     return render(request, 'TwosComplement/manage.html', context=context_dict)
 
 
+@login_required
 def questionnaire(request):
     context_dict = {'boldmessage': 'Please fill out our questionnaire to finish registration:'}
     if request.method == 'POST':
@@ -96,7 +166,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return redirect(reverse('my_dates'))
+                return redirect(reverse('TwosComplement:my_dates'))
             else:
                 return HttpResponse("Your Twos Complement account is disabled.")
         else:
@@ -105,7 +175,8 @@ def user_login(request):
     else:
         return render(request, 'TwosComplement/login.html')
 
-@login_required(login_url=reverse_lazy("index"))
+
+@login_required
 def user_logout(request):
     logout(request)
     return redirect(reverse('index'))
