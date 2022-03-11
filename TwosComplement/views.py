@@ -69,6 +69,7 @@ def myDates(request):
     questionnaires = Questionnaire.objects.all()
 
     active_user = request.user
+    active_user_questionnaire = None
 
     for q in range(len(questionnaires)):
         # print(questionnaires[q].user, active_user)
@@ -77,15 +78,14 @@ def myDates(request):
 
     matches = []
 
-    for u in range(len(questionnaires)):
-        match_check = check_match(active_user_questionnaire, questionnaires[u])
-        if match_check is not None:
-            matches.append(match_check)
+    if active_user_questionnaire is not None:
+        for u in range(len(questionnaires)):
+            match_check = check_match(active_user_questionnaire, questionnaires[u])
+            if match_check is not None:
+                matches.append(match_check)
 
-    matches.sort(key=lambda x: x[1], reverse=True)
-
-
-    context_dict['matches'] = [a[0] for a in matches[:5]]
+        matches.sort(key=lambda x: x[1], reverse=True)
+        context_dict['matches'] = [a[0] for a in matches[:5]]
 
     # print(context_dict['matches'])
 
