@@ -116,9 +116,10 @@ def questionnaire(request):
         questionnaire_form = QuestionnaireForm(request.POST)
 
         if questionnaire_form.is_valid():
-            questionnaire = questionnaire_form.save()
+            questionnaire = questionnaire_form.save(commit=False)
+            questionnaire.user = request.user
             questionnaire.save()
-            return redirect('/TwosComplement/index')
+            return redirect('TwosComplement:index')
         else:
             print(questionnaire_form.errors)
     else:
@@ -143,6 +144,8 @@ def register(request):
             profile.save()
 
             registered = True
+
+            login(request, user)
             return redirect('/TwosComplement/register/compatibility_questionnaire/')
         else:
             print(user_form.errors, profile_form.errors)

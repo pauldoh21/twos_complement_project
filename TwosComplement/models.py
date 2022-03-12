@@ -58,5 +58,6 @@ class Questionnaire(models.Model):
     Q8 = models.CharField(max_length=30, choices=Q8Choices, default=None)
     Q9 = models.CharField(max_length=30, choices=Q9Choices, default=None)
     Q10 = models.CharField(max_length=30, choices=Q10Choices, default=None)
+
     def __str__(self):
         return self.user.username

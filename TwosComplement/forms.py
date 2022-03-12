@@ -42,6 +42,7 @@ class UserProfileForm(forms.ModelForm):
 
 
 class QuestionnaireForm(forms.ModelForm):
+
     Q1 = forms.CharField(label="What is your favourite programming language?", widget=forms.Select(choices=Q1Choices),help_text="What is your favourite programming language?")
     Q2 = forms.CharField(label="What IDE do you use the most?", widget=forms.Select(choices=Q2Choices),help_text="What IDE do you use the most?")
     Q3 = forms.CharField(label="How long have you been coding for?", widget=forms.Select(choices=Q3Choices),help_text="How long have you been coding for?")
@@ -54,5 +55,5 @@ class QuestionnaireForm(forms.ModelForm):
     Q10 = forms.CharField(label="What is your favourite cuisine?",widget=forms.Select(choices=Q10Choices),help_text="What is your favourite cuisine?")
    
     class Meta:
-            model = Questionnaire
-            fields = ('Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9', 'Q10',)
+        model = Questionnaire
+        fields = ('Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9', 'Q10',)
