@@ -1,35 +1,30 @@
-<!DOCTYPE html>
-{% load staticfiles %}
+{% extends 'TwosComplement/base.html' %}
 
-<html>
+{% block title_block %}
+    Questionnaire
+{% endblock %}
 
-    <head>
-        <title>Questionnaire</title>
-    </head>
+{% block content %}
+    <h1>Questionnaire</h1>
+    <div>
+        <form id ="questionnaire_form" method="post" action="{% url 'TwosComplement:compatibility' %}">
+            {% csrf_token %}
 
-    <body>
-        <h1>Questionnaire</h1>
-        <div>
-            <form id ="questionnaire_form" method="post" action="{% url 'TwosComplement:compatibility' %}">
-                {% csrf_token %}
-                
-                {% for field in questionnaire_form.visible_fields %}
-                    {{ field.errors }}
-                    {{ field.help_text }} <br />
-                    {{ field }}
-                </br>
-                {% endfor %}
-                <br />
-            <input type="submit" name="submit" value="Submit" />
-            </form>
+            {% for field in questionnaire_form.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text }} <br />
+                {{ field }}
+            </br>
+            {% endfor %}
             <br />
+        <input type="submit" name="submit" value="Submit" />
+        </form>
+        <br />
 
-            <strong>{{ boldmessage }}</strong><br />
-            <a href="{% url 'TwosComplement:index' %}">Home</a><br />
-            <a href="{% url 'TwosComplement:about_us' %}">About us</a><br />
-            <a href="{% url 'TwosComplement:login' %}"></a><br />
-        </div>
+        <strong>{{ boldmessage }}</strong><br />
+        <a href="{% url 'TwosComplement:index' %}">Home</a><br />
+        <a href="{% url 'TwosComplement:about_us' %}">About us</a><br />
+        <a href="{% url 'TwosComplement:login' %}"></a><br />
+    </div>
 
-    </body>
-
-</html>
+{% endblock content %}

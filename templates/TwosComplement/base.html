@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Twos Complement -
+            {% block title_block %}
+                TwosComplement
+            {% endblock %}
+        </title>
+        <meta name="author" content="WAD2_GROUP_7B">
+        <meta name="description" content="Application for CS students Dates">
+        <meta name="viewport" content="width=device-width, initial-size=1.0">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/3830352c3e.js" crossorigin="anonymous"></script>
+        <link rel = "stylesheet" href = "{% static 'css/style.css' %}" type="text/css">
+    </head>
+
+    <body>
+        <header>
+
+            <ul>
+                <li><a href=""><img id = "logo" src="{% static 'images/logo.png' %}"
+                    alt="Twos Complement logo" /></a></li>
+                <li><a href="/TwosComplement/login/">Login</a></li>
+                <li><a href="/TwosComplement/register/">Register</a></li>
+                <li><a href="/TwosComplement/about_us/">About</a></li>
+            </ul>
+
+        </header>
+        <hr/>
+
+
+        <div >
+            {% block content %}
+                if you see this, something is wrong!
+            {% endblock content %}
+        </div>
+
+        <hr/>
+
+       <footer>
+
+        <div >
+
+                <div class="footer-social">
+                    <h3 class="footer-header white">Social Media</h3>
+                    <div class="social-icons">
+                        <i class="fab fa-facebook-square"></i>
+                        <i class="fab fa-instagram-square"></i>
+                        <i class="fab fa-twitter-square"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2022 - WAD2_GROUP_7B</p>
+            </div>
+
+
+        </div>
+
+        </footer>
+    </body>
+
+
+</html>

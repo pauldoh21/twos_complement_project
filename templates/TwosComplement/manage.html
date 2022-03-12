@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-{% load staticfiles %}
+{% extends 'TwosComplement/base.html' %}
 
-<html>
+{% block title_block %}
+    Manage
+{% endblock %}
 
-    <head>
-        <title>Login</title>
-    </head>
-
-    <body>
-        <h1>Manage my account</h1>
-        <div>
-            <strong>{{ boldmessage }}</strong><br />
-            <a href="{% url 'TwosComplement:index' %}">Home</a><br />
-            <a href="{% url 'TwosComplement:my_dates' %}">My dates</a><br />
-            <a href="{% url 'TwosComplement:about_us' %}">About us</a><br />
-
-        </div>
-    </body>
-
-</html>
+{% block content %}
+    <h1>Manage my account</h1>
+    <div>
+        <strong>{{ boldmessage }}</strong><br />
+        <a href="{% url 'TwosComplement:my_dates' %}">My dates</a><br />
+    </div>
+{% endblock content %}

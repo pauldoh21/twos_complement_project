@@ -1,44 +1,38 @@
-<!DOCTYPE html>
-{% load staticfiles %}
+{% extends 'TwosComplement/base.html' %}
+{% block title_block %}
+    My Dates
+{% endblock %}
 
-<html>
 
-    <head>
-        <title>My Dates</title>
-    </head>
+{% block content %}
+    <h1>My Dates</h1>
+    {% if matches %}
+    <div>
+        <strong>{{ boldmessage }}</strong><br />
+        {% for match in matches %}
+        <ul>
+            <li>
+                {{ match.user.username }}
+                <ul>
+                    <li>Match name : {{ match.name }}</li>
+                    <li>Match age : {{ match.age }}</li>
+                    <li>Match gender : {{ match.gender }}</li>
+                    <li>Match bio : {{ match.bio }}</li>
+                </ul>
+            </li>
+        </ul>
+        {%endfor%}
+    </div>
+    {% else %}
+            <strong>You have no matches.</strong>
+    {% endif %}
+    <div>
+        <a href="{% url 'TwosComplement:logout' %}">Logout</a><br />
 
-    <body>
-        <h1>My Dates</h1>
-        {% if matches %}
-        <div>
-            <strong>{{ boldmessage }}</strong><br />
-            {% for match in matches %}
-            <ul>
-                <li>
-                    {{ match.user.username }}
-                    <ul>
-                        <li>Match name : {{ match.name }}</li>
-                        <li>Match age : {{ match.age }}</li>
-                        <li>Match gender : {{ match.gender }}</li>
-                        <li>Match bio : {{ match.bio }}</li>
-                    </ul>
-                </li>
-            </ul>
-            {%endfor%}
-        </div>
-        {% else %}
-                <strong>You have no matches.</strong>
-        {% endif %}
-        <div>
-            <a href="{% url 'TwosComplement:logout' %}">Logout</a><br />
-            <a href="{% url 'TwosComplement:about_us' %}">About us</a><br />
-            
-        </div>
+    </div>
 
-        <div>
-            <a href="{% url 'TwosComplement:my_account' %}">My account</a><br />
-            <a href="{% url 'TwosComplement:manage' %}">Manage my account</a><br />
-        </div>
-    </body>
-
-</html> 
+    <div>
+        <a href="{% url 'TwosComplement:my_account' %}">My account</a><br />
+        <a href="{% url 'TwosComplement:manage' %}">Manage my account</a><br />
+    </div>
+{% endblock content %}
