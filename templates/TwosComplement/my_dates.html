@@ -12,6 +12,12 @@
         {% for match in matches %}
         <ul>
             <li>
+                {% if match.photo %}
+                <img src="{{ match.photo.url }}" width="100" height="100">
+                {% else %}
+                <img src="{{ MEDIA_URL }}profile_images/default.jpg" width="100" height="100">
+                {% endif %}
+                <br />
                 {{ match.user.username }}
                 <ul>
                     <li>Match name : {{ match.name }}</li>

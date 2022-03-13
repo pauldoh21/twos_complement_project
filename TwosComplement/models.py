@@ -23,7 +23,7 @@ class UserProfile(models.Model):
     age = models.IntegerField()
     name = models.CharField(max_length=30)
     phone = models.CharField(max_length=11)
-    photo = models.ImageField(upload_to='profile_images', blank=True)
+    photo = models.ImageField(upload_to='profile_images', blank=True, default='default.jpg')
     bio = models.CharField(max_length=254)
     gender = models.CharField(max_length=30, choices=Gender, default=None)
     sexualPreference = models.CharField(max_length=30, choices=Sexual_Preference, default=None)
