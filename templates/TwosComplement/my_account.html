@@ -8,7 +8,31 @@
 {% block content %}
     <h1>My Account</h1>
     <div>
-        <strong>{{ boldmessage }}</strong><br />
+        <strong>View your profile here!</strong><br />
+
+        <div>
+            {% if user.photo %}
+            <img src="{{ user.photo.url }}" width="100" height="100">
+            {% else %}
+            <img src="{{ MEDIA_URL }}profile_images/default.jpg" width="100" height="100">
+            {% endif %}
+            <ul>
+                <li><strong>{{ user.username }}</strong></li>
+                <br>
+                <li>Name: {{ user_profile.name }}</li>
+                <br>
+                <li>Age: {{ user_profile.age }}</li>
+                <br>
+                <li>Gender: {{ user_profile.gender }}</li>
+                <br>
+                <li>Sexuality: {{ user_profile.sexualPreference }}</li>
+                <br>
+                <li>Bio: {{ user_profile.bio }}</li>
+                <br>
+                <li>Email: {{ user.email }}</li>
+            </ul>
+        </div>
+
         <a href="{% url 'TwosComplement:my_dates' %}">My dates</a><br />
     </div>
 {% endblock content %}

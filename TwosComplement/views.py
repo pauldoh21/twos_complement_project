@@ -99,8 +99,9 @@ def myDates(request):
 
 @login_required
 def myAccount(request):
-    context_dict = {'boldmessage': 'View your profile!'}
-    return render(request, 'TwosComplement/my_account.html', context=context_dict)
+    current_user = request.user
+    current_user_profile = UserProfile.objects.get(user=current_user)
+    return render(request, 'TwosComplement/my_account.html', {"user": current_user, "user_profile": current_user_profile})
 
 
 @login_required
