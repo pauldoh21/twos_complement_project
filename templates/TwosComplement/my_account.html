@@ -11,8 +11,8 @@
         <strong>View your profile here!</strong><br />
 
         <div>
-            {% if user.photo %}
-            <img src="{{ user.photo.url }}" width="100" height="100">
+            {% if user_profile.photo %}
+            <img src="{{ user_profile.photo.url }}" width="100" height="100">
             {% else %}
             <img src="{{ MEDIA_URL }}profile_images/default.jpg" width="100" height="100">
             {% endif %}
@@ -23,9 +23,9 @@
                 <br>
                 <li>Age: {{ user_profile.age }}</li>
                 <br>
-                <li>Gender: {{ user_profile.gender }}</li>
+                <li>Gender: {{ user_profile.get_gender_display }}</li>
                 <br>
-                <li>Sexuality: {{ user_profile.sexualPreference }}</li>
+                <li>Sexuality: Prefers {{ user_profile.get_sexualPreference_display }}</li>
                 <br>
                 <li>Bio: {{ user_profile.bio }}</li>
                 <br>

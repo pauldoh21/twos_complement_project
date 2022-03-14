@@ -20,10 +20,10 @@
                 <br />
                 {{ match.user.username }}
                 <ul>
-                    <li>Name : {{ match.name }}</li>
-                    <li>Age : {{ match.age }}</li>
-                    <li>Gender : {{ match.gender }}</li>
-                    <li>Bio : {{ match.bio }}</li>
+                    <li>Name : {{ match.name }}</li><br />
+                    <li>Age : {{ match.age }}</li><br />
+                    <li>Gender : {{ match.get_gender_display }}</li><br />
+                    <li>Bio : {{ match.bio }}</li><br />
                 </ul>
             </li>
         </ul>
