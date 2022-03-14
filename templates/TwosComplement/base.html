@@ -26,13 +26,13 @@
             <ul>
                 <li><a href="/TwosComplement/"><img id = "logo" src="{% static 'images/logo.jpg' %}"
                     alt="Twos Complement logo" /></a></li>
-                    {% if user.is_authenticated%}
-                    <li><a href ="/TwosComplement/login/my_dates_logout/">Logout</a></11>
-                        <li><a href="/TwosComplement/about_us/">About</a></li>
-                        {%else %}
-                <li><a href="/TwosComplement/login/">Login</a></li>
-                <li><a href="/TwosComplement/register/">Register</a></li>
-                <li><a href="/TwosComplement/about_us/">About</a></li>
+                {% if user.is_authenticated%}
+                    <li><a href ="/TwosComplement/login/my_dates/logout/">Logout</a></li>
+                    <li><a href="/TwosComplement/about_us/">About</a></li>
+                {% else %}
+                    <li><a href="/TwosComplement/login/">Login</a></li>
+                    <li><a href="/TwosComplement/register/">Register</a></li>
+                    <li><a href="/TwosComplement/about_us/">About</a></li>
                 {% endif %} 
             </ul>
 
@@ -69,8 +69,6 @@
                 <p>&copy; 2022 - WAD2_GROUP_7B</p>
             </div>
 
-
-        </div>
 
         </footer>
     </div>
