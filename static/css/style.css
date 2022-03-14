@@ -39,11 +39,14 @@ body  {
   background-image: url("background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  
-  
-
-
+  text-align: center;
 }
+
+#register {
+  text-align:left
+}
+
+
 
 #card{
   width: 80%;
@@ -52,13 +55,43 @@ body  {
   padding: 20px;
 }
 
-#register{
-  text-align: center;
-}
-/*.center{
-  position: absolute;
-  top: 50%;
-  transform: translate(0,-50%);
-
+/*.login_button{
+  height: 500;
+  width: 100;
+  font-size: medium;
 }
 */
+
+input[type=text]{
+  border: 1px  solid rgb(255, 0, 85);
+  border-radius: 5px;
+}
+
+input[type=email]{
+  border: 1px  solid rgb(255, 0, 85);
+  border-radius: 5px;
+}
+
+input[type=password]{
+  border: 1px  solid rgb(255, 0, 85);
+  border-radius: 5px;
+}
+
+input[type=number]{
+  border: 1px  solid rgb(255, 0, 85);
+  border-radius: 5px;
+}
+
+input[type=image]{
+  border: 1px  solid rgb(255, 0, 85);
+  border-radius: 5px;
+}
+input[type=text]{
+  border: 1px  solid rgb(255, 0, 85);
+  border-radius: 5px;
+}
+input[type=text]{
+  border: 1px  solid rgb(255, 0, 85);
+  border-radius: 5px;
+}
+
