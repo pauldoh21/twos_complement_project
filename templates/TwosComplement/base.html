@@ -21,12 +21,13 @@
     </head>
 
     <body>
-        <header>
+        <header style="padding-bottom: 10px;">
 
             <ul>
                 <li><a href="/TwosComplement/"><img id = "logo" src="{% static 'images/logo.jpg' %}"
                     alt="Twos Complement logo" /></a></li>
                 {% if user.is_authenticated%}
+                    <li><a href ="/TwosComplement/login/my_dates/">My Dates</a></li>
                     <li><a href ="/TwosComplement/login/my_dates/logout/">Logout</a></li>
                     <li><a href="/TwosComplement/about_us/">About</a></li>
                 {% else %}
