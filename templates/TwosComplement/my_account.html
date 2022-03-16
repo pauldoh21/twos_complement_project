@@ -30,6 +30,14 @@
                 <li>Bio: {{ user_profile.bio }}</li>
                 <br>
                 <li>Email: {{ user.email }}</li>
+                <br>
+                {% if user_profile.github %}
+                    <li>GitHub : {{ user_profile.github }}</li>
+                {% endif %}
+                <br>
+                {% if user_profile.discord %}
+                    <li>Discord : {{ user_profile.discord }}</li><br />
+                {% endif %}
             </ul>
         </div>
 

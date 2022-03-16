@@ -27,6 +27,8 @@ class UserProfile(models.Model):
     bio = models.CharField(max_length=254)
     gender = models.CharField(max_length=30, choices=Gender, default=None)
     sexualPreference = models.CharField(max_length=30, choices=Sexual_Preference, default=None)
+    github = models.CharField(max_length=30, default=None, blank=True)
+    discord = models.CharField(max_length=30, default=None, blank=True)
 
     def __str__(self):
         return self.user.username

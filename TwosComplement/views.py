@@ -1,11 +1,12 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
 
 from TwosComplement.models import UserProfile, Matches, Questionnaire
-from TwosComplement.forms import UserForm, UserProfileForm, QuestionnaireForm
+from TwosComplement.forms import UserForm, UserProfileForm, QuestionnaireForm, ManageUserForm, ManageUserProfileForm
 
 
 def check_match(q1, q2):
@@ -106,8 +107,50 @@ def myAccount(request):
 
 @login_required
 def manage(request):
-    context_dict = {'boldmessage': 'Change any details about your profile here:'}
-    return render(request, 'TwosComplement/manage.html', context=context_dict)
+    current_user = request.user
+    current_user_profile = UserProfile.objects.get(user=current_user)
+
+    user_form = ManageUserForm(request.POST)
+    profile_form = ManageUserProfileForm(request.POST, request.FILES)
+
+    if request.method == 'POST':
+
+        if request.POST['username'] != '':
+            current_user.username = request.POST['username']
+        if request.POST['email'] != '':
+            current_user.email = request.POST['email']
+        if request.POST['password'] != '':
+            current_user.set_password(request.POST['password'])
+
+        current_user.save()
+
+        if request.POST['age'] != '':
+            current_user_profile.age = request.POST['age']
+        if request.POST['name'] != '':
+            current_user_profile.name = request.POST['name']
+        if request.POST['phone'] != '':
+            current_user_profile.phone = request.POST['phone']
+        if request.POST['bio'] != '':
+            current_user_profile.bio = request.POST['bio']
+        if request.POST['photo'] != '':
+            current_user_profile.photo = request.POST['photo']
+        if request.POST['gender'] != '0':
+            current_user_profile.gender = request.POST['gender']
+        if request.POST['sexualPreference'] != '0':
+            current_user_profile.sexualPreference = request.POST['sexualPreference']
+        if request.POST['github'] != '':
+            current_user_profile.github = request.POST['github']
+        if request.POST['discord'] != '':
+            current_user_profile.discord = request.POST['discord']
+
+        current_user_profile.save()
+
+        return redirect('TwosComplement:my_dates')
+
+    return render(request, 'TwosComplement/manage.html', context={'user': current_user,
+                                                                  'user_profile': current_user_profile,
+                                                                  'user_form': user_form,
+                                                                  'profile_form': profile_form})
 
 
 @login_required

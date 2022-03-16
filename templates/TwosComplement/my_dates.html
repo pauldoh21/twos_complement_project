@@ -24,6 +24,12 @@
                     <li>Age : {{ match.age }}</li><br />
                     <li>Gender : {{ match.get_gender_display }}</li><br />
                     <li>Bio : {{ match.bio }}</li><br />
+                    {% if match.github %}
+                        <li>GitHub : {{ match.github }}</li><br />
+                    {% endif %}
+                    {% if match.discord %}
+                        <li>Discord : {{ match.discord }}</li><br />
+                    {% endif %}
                 </ul>
             </li>
         </ul>

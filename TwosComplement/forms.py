@@ -35,10 +35,36 @@ class UserProfileForm(forms.ModelForm):
     bio = forms.CharField(max_length=254)
     gender = forms.CharField(label='Gender', widget=forms.Select(choices=Gender))
     sexualPreference = forms.CharField(label='Sexual preference', widget=forms.Select(choices=Sexual_Preference))
+    github = forms.CharField(max_length=30, required=False)
+    discord = forms.CharField(max_length=30, required=False)
 
     class Meta:
         model = UserProfile
-        fields = ('age', 'name', 'phone', 'photo', 'bio', 'gender', 'sexualPreference',)
+        fields = ('age', 'name', 'phone', 'photo', 'bio', 'gender', 'sexualPreference', 'github', 'discord')
+
+
+class ManageUserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password',)
+
+
+class ManageUserProfileForm(forms.ModelForm):
+    age = forms.IntegerField(required=False)
+    name = forms.CharField(max_length=30,required=False)
+    phone = forms.CharField(max_length=11,required=False)
+    photo = forms.ImageField(required=False)
+    bio = forms.CharField(max_length=254,required=False)
+    gender = forms.CharField(label='Gender', widget=forms.Select(choices=Gender),required=False)
+    sexualPreference = forms.CharField(label='Sexual preference', widget=forms.Select(choices=Sexual_Preference),required=False)
+    github = forms.CharField(max_length=30, required=False)
+    discord = forms.CharField(max_length=30, required=False)
+
+    class Meta:
+        model = UserProfile
+        fields = ('age', 'name', 'phone', 'photo', 'bio', 'gender', 'sexualPreference', 'github', 'discord')
 
 
 class QuestionnaireForm(forms.ModelForm):
