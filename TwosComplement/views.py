@@ -142,7 +142,6 @@ def register(request):
 
             profile = profile_form.save(commit=False)
             profile.user = user
-            print(profile.photo.url)
             profile.save()
 
             registered = True
