@@ -38,13 +38,19 @@
     {% else %}
             <strong>You have no matches.</strong>
     {% endif %}
-    <div>
-        <a href="{% url 'TwosComplement:logout' %}">Logout</a><br />
-
-    </div>
 
     <div>
-        <a href="{% url 'TwosComplement:my_account' %}">My account</a><br />
-        <a href="{% url 'TwosComplement:manage' %}">Manage my account</a><br />
+        <br></br>
+        <a href="{% url 'TwosComplement:my_account' %}">
+            <button class = "button">
+                My account
+            </button>
+        </a></br>
+    <br></br>
+        <a href="{% url 'TwosComplement:manage' %}">
+            <button class = "button">
+                Manage my account
+            </button>
+        </a></br>
     </div>
 {% endblock content %}

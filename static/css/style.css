@@ -6,7 +6,19 @@ h1{
   color: #bd1e2e;
   font-size: xx-large;
   text-decoration-style: solid;
+}
 
+.myaccount{
+  text-align: center;
+}
+
+#name{
+  color:#bd1e2e
+  
+}
+
+#tag{
+  color:#b8445f;
 }
 
 .button{
@@ -89,6 +101,10 @@ h1{
 
 .row{
 
+}
+
+li{
+  list-style-type: none;
 }
 
 li a {

@@ -16,20 +16,20 @@
             {% else %}
             <img class="profile_pic" src="{{ MEDIA_URL }}profile_images/default.jpg">
             {% endif %}
-            <ul>
-                <li><strong>{{ user.username }}</strong></li>
+            <ul class = "myAccount">
+                <li id = "name"><strong>{{ user.username }}</strong></li>
                 <br>
-                <li>Name: {{ user_profile.name }}</li>
+                <li><span id = "tag">Name: </span>{{ user_profile.name }}</li>
                 <br>
-                <li>Age: {{ user_profile.age }}</li>
+                <li><span id = "tag">Age: </span>{{ user_profile.age }}</li>
                 <br>
-                <li>Gender: {{ user_profile.get_gender_display }}</li>
+                <li><span id = "tag">Gender: </span>{{ user_profile.get_gender_display }}</li>
                 <br>
-                <li>Sexuality: Prefers {{ user_profile.get_sexualPreference_display }}</li>
+                <li><span id = "tag">Sexuality: </span>Prefers {{ user_profile.get_sexualPreference_display }}</li>
                 <br>
-                <li>Bio: {{ user_profile.bio }}</li>
+                <li><span id = "tag">Bio: </span>{{ user_profile.bio }}</li>
                 <br>
-                <li>Email: {{ user.email }}</li>
+                <li><span id = "tag">Email: </span>{{ user.email }}</li>
                 <br>
                 {% if user_profile.github %}
                     <li>GitHub : {{ user_profile.github }}</li>
@@ -41,6 +41,13 @@
             </ul>
         </div>
 
-        <a href="{% url 'TwosComplement:my_dates' %}">My dates</a><br />
+        
+
+        <a href="{% url 'TwosComplement:my_dates' %}">
+            <button class = "button">
+            My Dates
+            </button>
+        </a><br />
+        
     </div>
 {% endblock content %}

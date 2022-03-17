@@ -16,7 +16,12 @@
 
         <input type="submit" name="submit" value="Update" class = "button"/>
         </form>
+        <br></br>
 
-        <a href="{% url 'TwosComplement:my_dates' %}">My dates</a><br />
+        <a href="{% url 'TwosComplement:my_dates' %}">
+            <button class = "button">
+            My Dates
+            </button>
+        </a><br />
     </div>
 {% endblock content %}
