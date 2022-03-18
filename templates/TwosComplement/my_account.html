@@ -32,11 +32,11 @@
                 <li><span id = "tag">Email: </span>{{ user.email }}</li>
                 <br>
                 {% if user_profile.github %}
-                    <li>GitHub : {{ user_profile.github }}</li>
+                    <li><span id = "tag">GitHub : </span>{{ user_profile.github }}</li>
                 {% endif %}
                 <br>
                 {% if user_profile.discord %}
-                    <li>Discord : {{ user_profile.discord }}</li><br />
+                    <li><span id = "tag">Discord : </span>{{ user_profile.discord }}</li><br />
                 {% endif %}
             </ul>
         </div>
