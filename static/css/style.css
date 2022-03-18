@@ -8,6 +8,19 @@ h1{
   text-decoration-style: solid;
 }
 
+h2{
+  font-family: "Tw Cen MT", serif;
+  color: #b8445f;
+  font-size: xx-large;
+  text-decoration-style: solid;
+}
+
+h3{
+  font-family: "Tw Cen MT", serif;
+  color: rgb(175, 92, 92);
+  text-decoration-style: solid;
+}
+
 .myaccount{
   text-align: center;
 }
@@ -21,7 +34,7 @@ h1{
   color:#b8445f;
 }
 
-.button{
+#button{
   display: inline-block;
   padding: 15px 25px;
   font-size: 24px;
@@ -37,14 +50,31 @@ h1{
   box-shadow: 0 9px rgb(175, 92, 92);
 }
 
-.button:hover{
+#button:hover{
   background-color: #b8445f
 }
 
-.button:active{
+#button:active{
   background-color: #bd1e2e;
   box-shadow: 0 5px rgb(175, 92, 92);
   transform: translateY(4px);
+}
+
+#Xbutton{
+  padding: 5px 10px;
+  font-size: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font-family: "Tw Cen MT", serif;
+  outline: none;
+  color: #fff;
+  background-color: #bd1e2e;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 9px rgb(175, 92, 92);
+  float: right;
+
 }
 
 
@@ -214,3 +244,23 @@ input[type=text]{
 }
 
 /*End of slideshow*/
+
+/* contact buttons */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.form-popup {
+  display: none;
+  border: 3px solid rgb(175, 92, 92);
+  z-index: 9;
+}
+
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}

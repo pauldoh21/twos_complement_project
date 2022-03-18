@@ -33,8 +33,15 @@
           <h2>Ahmed</h2>
           <p class="column-title">Director/ Backend Developer</p>
           <p class="column-detail">I had a major hand in implementing the backend development, as well as carrying out the testing for the site.</p>
-          <p style= "font-weight: bold;">Ahmed@TwosComplement.com</p>
-          <p style="margin-top: 1rem;"><button class="button">Contact</button></p>
+          <button id="button" class="open-button" onclick="AopenForm()">
+            Contact
+          </button>
+          <div class="form-popup" id="AForm">
+            <button type="button" id ="Xbutton" class="btn cancel" onclick="AcloseForm()">&times;</button>
+          <form class="form-contaner">
+            <h3>Ahmed@TwosComplement.com</h£>
+          </form>
+          </div>
           
         </div>
       </div>
@@ -44,8 +51,15 @@
         <h2>Lauren</h2>
         <p class="column-title">Frontend Developer</p>
         <p class="column-detail">I worked on the UI, and helped with database/model design.</p>
-        <p style= "font-weight: bold;">Lauren@TwosComplement.com</p>   
-        <p style="margin-top: 1rem;"><button class="button">Contact</button></p>
+        <button id="button" class="open-button" onclick="LopenForm()">
+          Contact
+        </button>
+        <div class="form-popup" id="LForm">
+          <button type="button" id ="Xbutton" class="btn cancel" onclick="LcloseForm()">&times;</button>
+        <form class="form-contaner">
+          <h3>Lauren@TwosComplement.com</h3>
+        </form>
+        </div>
       </div>
     </div>
     <br></br>
@@ -58,8 +72,15 @@
         <h2>Mike</h2>
         <p class="column-title">Backend/Frontend developer</p>
         <p class="column-detail">I worked on the site hierarchy and inheritance between html pages.</p>
-        <p style= "font-weight: bold;">Mike@TwosComplement.com</p>
-        <p style="margin-top: 1rem;"><button class="button">Contact</button></p>
+        <button id="button" class="open-button" onclick="MopenForm()">
+          Contact
+        </button>
+        <div class="form-popup" id="MForm">
+          <button type="button" id ="Xbutton" class="btn cancel" onclick="McloseForm()">&times;</button>
+        <form class="form-contaner">
+          <h3>Mike@TwosComplement.com</h3>
+        </form>
+        </div>
       </div>
     </div>
     <br></br>
@@ -72,8 +93,15 @@
         <h2>Niamh</h2>
         <p class="column-title">Designer/Founder/Backend Developer</p>
         <p class="column-detail">The brains behind the idea, I also hold a strong position in the backend development. I also created the logo.</p>
-        <p style= "font-weight: bold;">Niamh@TwosComplement.com</p>
-        <p style="margin-top: 1rem;"><button class="button">Contact</button></p>
+        <button id="button" class="open-button" onclick="NopenForm()">
+          Contact
+        </button>
+        <div class="form-popup" id="NForm">
+          <button type="button" id ="Xbutton" class="btn cancel" onclick="NcloseForm()">&times;</button>
+        <form class="form-contaner">
+          <h3>Niamh@TwosComplement.com</h3>
+        </form>
+        </div>
       </div>
     </div>
     <br></br>
@@ -86,8 +114,15 @@
         <h2>Paul</h2>
         <p class="column-title">Backend Developer</p>
         <p  class="column-detail">I worked on the database behind the website, and also designed our matching algorithm.</p>
-        <p style= "font-weight: bold;">Paul@TwosComplement.com</p>
-        <p style="margin-top: 1rem;"><button class="button">Contact</button></p>
+        <button id="button" class="open-button" onclick="PopenForm()">
+          Contact
+        </button>
+        <div class="form-popup" id="PForm">
+          <button type="button" id ="Xbutton" class="btn cancel" onclick="PcloseForm()">&times;</button>
+        <form class="form-contaner">
+          <h3>Paul@TwosComplement.com</h3>
+        </form>
+        </div>
       </div>
     </div>
     <br></br>
@@ -100,13 +135,69 @@
         <h2>Rhythm</h2>
         <p class="column-title">Designer/Frontend Developer</p>
         <p class="column-detail">I designed the background image, helped with the design spec and worked on the UI.</p>
-        <p style= "font-weight: bold;">Rhythm@TwosComplement.com</p>
-        <p style="margin-top: 1rem;"><button class="button">Contact</button></p>
-      </div>
+        <button id="button" class="open-button" onclick="RopenForm()">
+          Contact
+        </button>
+        <div class="form-popup" id="RForm">
+          <button type="button" id ="Xbutton" class="btn cancel" onclick="RcloseForm()">&times;</button>
+        <form class="form-contaner">
+          <h3>Rhythm@TwosComplement.com</h3>
+        </form>
+        </div>
     </div>
     <br></br>
 
   </div>
+
+  <script>
+    function AopenForm() {
+      document.getElementById("AForm").style.display = "block";
+    }
+
+    function AcloseForm() {
+      document.getElementById("AForm").style.display = "none";
+    }
+
+    function LopenForm() {
+      document.getElementById("LForm").style.display = "block";
+    }
+
+    function LcloseForm() {
+      document.getElementById("LForm").style.display = "none";
+    }
+
+    function MopenForm() {
+      document.getElementById("MForm").style.display = "block";
+    }
+
+    function McloseForm() {
+      document.getElementById("MForm").style.display = "none";
+    }
+
+    function NopenForm() {
+      document.getElementById("NForm").style.display = "block";
+    }
+
+    function NcloseForm() {
+      document.getElementById("NForm").style.display = "none";
+    }
+
+    function PopenForm() {
+      document.getElementById("PForm").style.display = "block";
+    }
+
+    function PcloseForm() {
+      document.getElementById("PForm").style.display = "none";
+    }
+
+    function RopenForm() {
+      document.getElementById("RForm").style.display = "block";
+    }
+    
+    function RcloseForm() {
+      document.getElementById("RForm").style.display = "none";
+    }
+    </script>
 
 
 
