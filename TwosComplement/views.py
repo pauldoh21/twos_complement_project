@@ -132,8 +132,8 @@ def manage(request):
             current_user_profile.phone = request.POST['phone']
         if request.POST['bio'] != '':
             current_user_profile.bio = request.POST['bio']
-        if request.POST['photo'] != '':
-            current_user_profile.photo = request.POST['photo']
+        if request.FILES['photo'] != '':
+            current_user_profile.photo = request.FILES['photo']
         if request.POST['gender'] != '0':
             current_user_profile.gender = request.POST['gender']
         if request.POST['sexualPreference'] != '0':
