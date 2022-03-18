@@ -180,3 +180,37 @@ input[type=text]{
   border-radius: 5px;
 }
 
+
+/* Slideshow.html */
+
+#slideshow {
+    width: 100%;
+    max-width: 100%;
+}
+
+.slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+.slide img {
+
+    
+    width: 100%;
+    display: block;
+}
+
+.slide-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+
+}
+
+/*End of slideshow*/
