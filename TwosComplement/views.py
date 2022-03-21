@@ -115,15 +115,6 @@ def manage(request):
 
     if request.method == 'POST':
 
-        if request.POST['username'] != '':
-            current_user.username = request.POST['username']
-        if request.POST['email'] != '':
-            current_user.email = request.POST['email']
-        if request.POST['password'] != '':
-            current_user.set_password(request.POST['password'])
-
-        current_user.save()
-
         if request.POST['age'] != '':
             current_user_profile.age = request.POST['age']
         if request.POST['name'] != '':
