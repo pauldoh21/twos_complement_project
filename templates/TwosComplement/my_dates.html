@@ -23,7 +23,7 @@
                     <span id = "tag">Age : </span>{{ match.age }}<br />
                     <span id = "tag">Gender : </span>{{ match.get_gender_display }}<br /></td>
                     <td><span id = "tag">Bio : </span>{{ match.bio }}</td><br />
-                    <td><span id = "tag">Email : </span>{{ match.email }}
+                    <td><span id = "tag">Email : </span>{{ match.user.email }}
                     {% if match.github %}
                         <span id = "tag">GitHub : </span>{{ match.github }}<br />
                     {% endif %}
