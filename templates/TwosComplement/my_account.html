@@ -8,8 +8,6 @@
 {% block content %}
     <h1>My Account</h1>
     <div>
-        <strong>View your profile here!</strong><br />
-
         <table id = "register">
             <tr>
             {% if user_profile.photo %}
@@ -23,7 +21,7 @@
                 <br>
             </tr>
             <tr>
-                <td><span id = "name">About Me:</span><br>
+                <td><span id = "name">About Me</span><br>
                 <span id = "tag">Age: </span>{{ user_profile.age }}
                 <br>
                <span id = "tag">Gender: </span>{{ user_profile.get_gender_display }}
@@ -34,7 +32,7 @@
                 <br>
             </tr>
             <tr>
-                <td><span id = "name">Contacts: </span><br>
+                <td><span id = "name">Contacts</span><br>
                 <span id = "tag">Email: </span>{{ user.email }}
                 {% if user_profile.github %}
                     <span id = "tag">GitHub : </span>{{ user_profile.github }}
