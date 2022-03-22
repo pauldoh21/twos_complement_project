@@ -1,7 +1,7 @@
-
 from django.db import models
 from django.contrib.auth.models import User
 
+# Different choices for forms in UserProfile and Questionnaire models
 
 Gender = (('0',''),('1','Male'),('2', 'Female'),('3', 'Prefer not to specify'))
 Sexual_Preference = (('0',''),('1','Male'),('2', 'Female'),('3','No preference'))
@@ -18,6 +18,7 @@ Q9Choices = (('0',''),('1',"Sports"),('2',"Travel"),('3',"Working"),('4',"Sleepi
 Q10Choices = (('0',''),('1',"Italian"),('2',"Indian"),('3',"Chinese"),('4',"Mexican"),('5',"other"),('6',"No Preference"))
 
 
+# UserProfile model - contains the details about the users
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     age = models.IntegerField()
@@ -34,6 +35,7 @@ class UserProfile(models.Model):
         return self.user.username
 
 
+# Matches model - contains details about matches
 class Matches(models.Model):
 
     user1 = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name="user1")
@@ -47,6 +49,7 @@ class Matches(models.Model):
         verbose_name_plural = 'Matches'
 
 
+# Questionnaire model - contains users questionnaire answers, linked to user
 class Questionnaire(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
