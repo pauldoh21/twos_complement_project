@@ -9,6 +9,7 @@ from TwosComplement.models import UserProfile, Matches, Questionnaire
 from TwosComplement.forms import UserForm, UserProfileForm, QuestionnaireForm, ManageUserForm, ManageUserProfileForm
 
 
+# Matching algorithm
 def check_match(q1, q2):
     users = UserProfile.objects.all()
 
@@ -46,8 +47,7 @@ def check_match(q1, q2):
 
 
 def index(request):
-    context_dict = {'boldmessage': 'Hello guys'}
-    return render(request, 'TwosComplement/index.html', context=context_dict)
+    return render(request, 'TwosComplement/index.html')
 
 
 def about(request):
@@ -55,11 +55,9 @@ def about(request):
     return render(request, 'TwosComplement/about_us.html', context=context_dict)
 
 
-# def login(request):
-#    context_dict = {'boldmessage': 'This is the login page'}
-#    return render(request, 'TwosComplement/login.html', context=context_dict)
-
-
+# decorator used for user authentication
+# user can only view mydates once they've logged in.
+# displays 5 top matches if there are any
 @login_required
 def myDates(request):
 
@@ -88,16 +86,11 @@ def myDates(request):
         matches.sort(key=lambda x: x[1], reverse=True)
         context_dict['matches'] = [a[0] for a in matches[:5]]
 
-    # print(context_dict['matches'])
-
     return render(request, 'TwosComplement/my_dates.html', context=context_dict)
 
 
-# def register(request):
-#   context_dict = {'boldmessage': 'Please fill out your details below to register:'}
-#  return render(request, 'TwosComplement/register.html', context=context_dict)
-
-
+# decorator used for user authentication
+# user can only view myaccount once they've logged in.
 @login_required
 def myAccount(request):
     current_user = request.user
@@ -105,6 +98,8 @@ def myAccount(request):
     return render(request, 'TwosComplement/my_account.html', {"user": current_user, "user_profile": current_user_profile})
 
 
+# decorator used for user authentication
+# user can only edit their profile once they're logged in.
 @login_required
 def manage(request):
     current_user = request.user
@@ -147,6 +142,8 @@ def manage(request):
                                                                   'profile_form': profile_form})
 
 
+# decorator used for user authentication
+# user can only view mydates once they've registered
 @login_required
 def questionnaire(request):
     context_dict = {'boldmessage': 'Please fill out our questionnaire to finish registration:'}
@@ -165,6 +162,7 @@ def questionnaire(request):
     return render(request, 'TwosComplement/compatibility_questionnaire.html', context={'questionnaire_form': questionnaire_form})
 
 
+# register view - populates User/UserProfile model and then sends to questionnaire
 def register(request):
     registered = False
 
@@ -197,6 +195,7 @@ def register(request):
                            'registered': registered})
 
 
+# login view - uses inbuilt django functions to allow users to login etc
 def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -217,6 +216,8 @@ def user_login(request):
         return render(request, 'TwosComplement/login.html')
 
 
+# decorator used for user authentication
+# user can only logout once they've logged in.
 @login_required
 def user_logout(request):
     logout(request)
