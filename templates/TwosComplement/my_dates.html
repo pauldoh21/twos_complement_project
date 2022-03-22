@@ -10,7 +10,7 @@
     <div>
         <strong>{{ boldmessage }}</strong><br />
         {% for match in matches %}
-        <table class = "match">
+        <table>
             <tr>
                 {% if match.photo %}
                 <td><img class="profile_pic" src="{{ match.photo.url }}" id = "pic"></td>
