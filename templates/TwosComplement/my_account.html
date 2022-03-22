@@ -10,35 +10,41 @@
     <div>
         <strong>View your profile here!</strong><br />
 
-        <div>
+        <table id = "register">
+            <tr>
             {% if user_profile.photo %}
-            <img class="profile_pic" src="{{ user_profile.photo.url }}">
+            <td><img class="profile_pic" src="{{ user_profile.photo.url }}"></td>
             {% else %}
-            <img class="profile_pic" src="{{ MEDIA_URL }}profile_images/default.jpg">
+            <td><img class="profile_pic" src="{{ MEDIA_URL }}profile_images/default.jpg"></td>
             {% endif %}
-            <ul class = "myAccount">
-                <li id = "name"><strong>{{ user.username }}</strong></li>
+                <td><span id = "name"><strong>{{ user_profile.name }}</strong></span>
                 <br>
-                <li><span id = "tag">Name: </span>{{ user_profile.name }}</li>
+                @{{ user.username }}
                 <br>
-                <li><span id = "tag">Age: </span>{{ user_profile.age }}</li>
+            </tr>
+            <tr>
+                <td><span id = "name">About Me:</span><br>
+                <span id = "tag">Age: </span>{{ user_profile.age }}
                 <br>
-                <li><span id = "tag">Gender: </span>{{ user_profile.get_gender_display }}</li>
+               <span id = "tag">Gender: </span>{{ user_profile.get_gender_display }}
                 <br>
-                <li><span id = "tag">Sexuality: </span>Prefers {{ user_profile.get_sexualPreference_display }}</li>
+                <span id = "tag">Sexuality: </span>Prefers {{ user_profile.get_sexualPreference_display }}
                 <br>
-                <li><span id = "tag">Bio: </span>{{ user_profile.bio }}</li>
+                <span id = "tag">Bio: </span>{{ user_profile.bio }}</td>
                 <br>
-                <li><span id = "tag">Email: </span>{{ user.email }}</li>
-                <br>
+            </tr>
+            <tr>
+                <td><span id = "name">Contacts: </span><br>
+                <span id = "tag">Email: </span>{{ user.email }}
                 {% if user_profile.github %}
-                    <li><span id = "tag">GitHub : </span>{{ user_profile.github }}</li>
+                    <span id = "tag">GitHub : </span>{{ user_profile.github }}
                 {% endif %}
-                <br>
+                    <br>
                 {% if user_profile.discord %}
-                    <li><span id = "tag">Discord : </span>{{ user_profile.discord }}</li><br />
+                    <span id = "tag">Discord : </span>{{ user_profile.discord }}</td><br />
                 {% endif %}
-            </ul>
+            </tr>
+            </table>
         </div>
 
         

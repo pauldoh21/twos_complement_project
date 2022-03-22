@@ -8,6 +8,7 @@
 {% block content %}
 <div id= "register">
     <h1>Register</h1>
+    <p id = "info">Fields with * are required</p>
     <form id="user_form" method="post" action="{% url 'TwosComplement:register' %}"
     enctype="multipart/form-data">
         {% csrf_token %}

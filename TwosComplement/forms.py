@@ -20,7 +20,7 @@ Q10Choices = (('0',''),('1',"Italian"),('2',"Indian"),('3',"Chinese"),('4',"Mexi
 
 
 class UserForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput())
+    password = forms.CharField(widget=forms.PasswordInput(), help_text= "*")
 
     class Meta:
         model = User
@@ -28,13 +28,13 @@ class UserForm(forms.ModelForm):
 
 
 class UserProfileForm(forms.ModelForm):
-    age = forms.IntegerField(required=True)
-    name = forms.CharField(max_length=30, required=True)
-    phone = forms.CharField(max_length=11, required=True)
+    age = forms.IntegerField(required=True, help_text= "*")
+    name = forms.CharField(max_length=30, required=True, help_text= "*")
+    phone = forms.CharField(max_length=11, required=True, help_text= "*")
     photo = forms.ImageField(required=False)
-    bio = forms.CharField(max_length=254)
-    gender = forms.CharField(label='Gender', widget=forms.Select(choices=Gender))
-    sexualPreference = forms.CharField(label='Sexual preference', widget=forms.Select(choices=Sexual_Preference))
+    bio = forms.CharField(max_length=254, help_text= "*")
+    gender = forms.CharField(label='Gender', widget=forms.Select(choices=Gender), help_text= "*")
+    sexualPreference = forms.CharField(label='Sexual preference', widget=forms.Select(choices=Sexual_Preference), help_text= "*")
     github = forms.CharField(max_length=30, required=False)
     discord = forms.CharField(max_length=30, required=False)
 

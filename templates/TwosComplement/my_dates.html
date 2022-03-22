@@ -10,29 +10,29 @@
     <div>
         <strong>{{ boldmessage }}</strong><br />
         {% for match in matches %}
-        <ul>
-            <li>
+        <table class = "match">
+            <tr>
                 {% if match.photo %}
-                <img class="profile_pic" src="{{ match.photo.url }}">
+                <td><img class="profile_pic" src="{{ match.photo.url }}" id = "pic"></td>
                 {% else %}
-                <img class="profile_pic" src="{{ MEDIA_URL }}profile_images/default.jpg">
+                <td><img class="profile_pic" src="{{ MEDIA_URL }}profile_images/default.jpg" id = "pic"></td>
                 {% endif %}
                 <br />
-                {{ match.user.username }}
-                <ul>
-                    <li>Name : {{ match.name }}</li><br />
-                    <li>Age : {{ match.age }}</li><br />
-                    <li>Gender : {{ match.get_gender_display }}</li><br />
-                    <li>Bio : {{ match.bio }}</li><br />
+                <td><span id = "name"><strong>{{ match.user.username }}</strong></span> <br />
+                    <span id = "tag">Name : </span>{{ match.name }}<br />
+                    <span id = "tag">Age : </span>{{ match.age }}<br />
+                    <span id = "tag">Gender : </span>{{ match.get_gender_display }}<br /></td>
+                    <td><span id = "tag">Bio : </span>{{ match.bio }}</td><br />
+                    <td><span id = "tag">Email : </span>{{ match.email }}
                     {% if match.github %}
-                        <li>GitHub : {{ match.github }}</li><br />
+                        <span id = "tag">GitHub : </span>{{ match.github }}<br />
                     {% endif %}
                     {% if match.discord %}
-                        <li>Discord : {{ match.discord }}</li><br />
+                        <span id = "tag">Discord : </span>{{ match.discord }}<br />
                     {% endif %}
-                </ul>
-            </li>
-        </ul>
+                    </td>
+                </tr>
+        </table>
         {%endfor%}
     </div>
     {% else %}
