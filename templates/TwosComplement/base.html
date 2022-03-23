@@ -30,13 +30,13 @@
                     alt="Twos Complement logo" /></a>
                 <div class = "nav-right">
                     {% if user.is_authenticated%}
-                    <a href ="/TwosComplement/login/my_dates/">My Dates</a>
-                    <a href ="/TwosComplement/login/my_dates/logout/">Logout</a>
-                    <a href="/TwosComplement/about_us/">About</a>
+                    <a href ="{% url 'TwosComplement:my_dates' %}">My Dates</a>
+                    <a href ="{% url 'TwosComplement:logout' %}">Logout</a>
+                    <a href="{% url 'TwosComplement:about_us' %}">About</a>
                 {% else %}
-                    <a href="/TwosComplement/login/">Login</a>
-                    <a href="/TwosComplement/register/">Register</a>
-                    <a href="/TwosComplement/about_us/">About</a>
+                    <a href="{% url 'TwosComplement:login' %}">Login</a>
+                    <a href="{% url 'TwosComplement:register' %}">Register</a>
+                    <a href="{% url 'TwosComplement:about_us' %}">About</a>
                 {% endif %} 
                   </div>  
             <div>
